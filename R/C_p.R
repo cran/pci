@@ -52,12 +52,13 @@ C_p = function(sigma, lsl, usl, dl) {
   is_na_ = flag_na(sigma, lsl, usl, dl)
 
   val = (usl - lsl) / (dl * sigma)
+  names(val) = NULL
 
   if (any(is_na_, na.rm = FALSE))
     val[is_na_] = NA_real_
 
   stopifnot(exprs = {
-    vek::is_dbl_vec_z(val)
+    vek::is_dbl_vec_nz(val)
     all(val > 0L, na.rm = TRUE)
   })
 

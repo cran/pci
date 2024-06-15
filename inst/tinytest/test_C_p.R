@@ -56,6 +56,13 @@ expect_identical(C_p(0., 1., 2., 6.), NaN)
 expect_identical(C_p(c(0., 1/6), 1., 2., 6.), c(NaN, 1.))
 
 
+# Assert that output won't carry names attribute.
+expect_identical(C_p(c(foo = 1/6), 1., 2., 6.), 1.)
+expect_identical(C_p(1/6, c(foo = 1.), 2., 6.), 1.)
+expect_identical(C_p(1/6, 1., c(foo = 2.), 6.), 1.)
+expect_identical(C_p(1/6, 1., 2., c(foo = 6.)), 1.)
+
+
 # Test known relations to other PCI's.
 expect_identical(
   C_p(1/6, 1., 2., 6.),

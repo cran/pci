@@ -60,10 +60,11 @@ C_pk = function(mu, sigma, lsl, usl, dl) {
   k = (abs(m - mu)) / ((usl - lsl) / 2L)
 
   val = C_p(sigma, lsl, usl, dl) * (1L - k)
+  names(val) = NULL
 
   if (any(is_na_, na.rm = FALSE))
     val[is_na_] = NA_real_
 
-  stopifnot(vek::is_dbl_vec_z(val))
+  stopifnot(vek::is_dbl_vec_nz(val))
   return(val)
 }

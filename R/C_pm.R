@@ -61,14 +61,14 @@ C_pm = function(mu, sigma, target, lsl, usl, dl) {
 
   is_na_ = flag_na(mu, sigma, target, lsl, usl, dl)
 
-  val = (usl - lsl) /
-    (dl * sqrt(sigma^2L + (mu - target)^2L))
+  val = (usl - lsl) / (dl * sqrt(sigma^2L + (mu - target)^2L))
+  names(val) = NULL
 
   if (any(is_na_, na.rm = FALSE))
     val[is_na_] = NA_real_
 
   stopifnot(exprs = {
-    vek::is_dbl_vec_z(val)
+    vek::is_dbl_vec_nz(val)
     all(val > 0L, na.rm = TRUE)
   })
 

@@ -46,6 +46,13 @@ expect_identical(C_pl(3., 0., 2., 3.), NaN)
 expect_identical(C_pl(3., c(1/3, 0.), 2., 3.), c(1., NaN))
 
 
+# Assert that output won't carry names attribute.
+expect_identical(C_pl(c(foo = 3.), 1/3, 2., 3.), 1.)
+expect_identical(C_pl(3., c(foo = 1/3), 2., 3.), 1.)
+expect_identical(C_pl(3., 1/3, c(foo = 2.), 3.), 1.)
+expect_identical(C_pl(3., 1/3, 2., c(foo = 3.)), 1.)
+
+
 # Test pci_info$expr_r.
 e = str2expression(pci_info["C_pl", "expr_r"])
 args1 = list(mu = 3., sigma = 1/3, lsl = 2., l = 3.)

@@ -51,10 +51,11 @@ C_pl = function(mu, sigma, lsl, l) {
   is_na_ = flag_na(mu, sigma, lsl, l)
 
   val = (mu - lsl) / (l * sigma)
+  names(val) = NULL
 
   if (any(is_na_, na.rm = FALSE))
     val[is_na_] = NA_real_
 
-  stopifnot(vek::is_dbl_vec_z(val))
+  stopifnot(vek::is_dbl_vec_nz(val))
   return(val)
 }

@@ -1,6 +1,6 @@
 Package: pci
 Title: A Collection of Process Capability Index Functions
-Version: 1.0.0
+Version: 1.0.1
 Authors@R: 
     person("Sam", "Semegne", email = "sam.ahoi@hotmail.com", role = c("aut", "cre"))
 Maintainer: Sam Semegne <sam.ahoi@hotmail.com>
@@ -22,7 +22,7 @@ LazyData: true
 Suggests: tinytest (>= 1.4.1), devtools (>= 2.4.5)
 URL: https://github.com/samsemegne/pci
 NeedsCompilation: no
-Packaged: 2024-06-12 19:35:24 UTC; Sam
+Packaged: 2024-06-14 23:26:00 UTC; Sam
 Author: Sam Semegne [aut, cre]
 Repository: CRAN
-Date/Publication: 2024-06-13 17:40:05 UTC
+Date/Publication: 2024-06-15 00:30:06 UTC

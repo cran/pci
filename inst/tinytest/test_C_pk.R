@@ -58,6 +58,15 @@ expect_identical(C_pk(2.5, c(NaN, 1/6), 2., 3., 6.), c(NaN, 1.))
 expect_identical(C_pk(2.5, 0., 2., 3., 6.), NaN)
 expect_identical(C_pk(2.5, c(0., 1/6), 2., 3., 6.), c(NaN, 1.))
 
+
+# Assert that output won't carry names attribute.
+expect_identical(C_pk(c(foo = 2.5), 1/6, 2., 3., 6.), 1.)
+expect_identical(C_pk(2.5, c(foo = 1/6), 2., 3., 6.), 1.)
+expect_identical(C_pk(2.5, 1/6, c(foo = 2.), 3., 6.), 1.)
+expect_identical(C_pk(2.5, 1/6, 2., c(foo = 3.), 6.), 1.)
+expect_identical(C_pk(2.5, 1/6, 2., 3., c(foo = 6.)), 1.)
+
+
 # Test special cases.
 expect_identical(C_pk(2.5, 1., 2., 3., 6.), C_p(1., 2., 3., 6.))
 

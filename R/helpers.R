@@ -66,8 +66,17 @@ flag_na = function(...) {
   stopifnot(...length() > 0L)
 
   dots = list(...)
+  is_num_vec_ = vapply(
+    X = dots,
+    FUN = function(x) { return(vek::is_num_vec(x)) },
+    FUN.VALUE = logical(1L),
+    USE.NAMES = FALSE
+  )
 
-  stopifnot(do.call(is_ok_lens, dots))
+  stopifnot(exprs = {
+    all(is_num_vec_, na.rm = FALSE)
+    do.call(is_ok_lens, dots)
+  })
 
   len = lengths(dots, use.names = FALSE)
   max_len = max(len, na.rm = FALSE)
@@ -98,7 +107,9 @@ flag_na = function(...) {
   }
 
   na_mask = lapply(X = dots[len > 1L], FUN = function(x) {
-    return(is.na(x) & !is.nan(x))
+    k = is.na(x) & !is.nan(x)
+    names(k) = NULL
+    return(k)
   })
 
   na_mask = do.call(rbind, na_mask)
